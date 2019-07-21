@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class MVVM {
-}
-exports.default = MVVM;
+exports.isElementNode = (node) => {
+    return node.nodeType === 1;
+};

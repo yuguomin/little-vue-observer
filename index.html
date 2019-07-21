@@ -11,10 +11,10 @@
     <div @Click="reset()">{{b}}</div>
   </div>
 
-  <script src="./dist/MVVM.js"></script>
+  <script src="./dist/js/mvvm.js"></script>
   <script>
     var a = document.getElementById('app');
-    new Vue({
+    new MVVM({
       el: a,
       data: {
         b: 'xxxx',
