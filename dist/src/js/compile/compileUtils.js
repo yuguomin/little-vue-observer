@@ -25,14 +25,14 @@ define(["require", "exports", "./updateUtils", "../../constant/directive"], func
             _this.isDirective = function (attrName) {
                 return Boolean(directive_1.DirectiveMap[attrName]);
             };
-            _this.compileText = function (node, vm, expr) {
+            _this.compileDirectiveText = function (node, vm, expr) {
                 // expr = expr.split('.').map((value) => {
                 //   return `[${value}]`;
                 // }).join('');
                 // console.log(vm.$data[expr]);
                 _this.textUpdater(node, vm.$data[expr]);
             };
-            _this.compileValue = function (node, vm, expr) {
+            _this.compileDirectiveValue = function (node, vm, expr) {
                 // expr = expr.split('.').map((value) => {
                 //   return `[${value}]`;
                 // }).join('');

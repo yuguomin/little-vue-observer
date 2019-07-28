@@ -9,6 +9,9 @@
 <body>
   <div id="app">
     <div v-text="message" class="test">{{b}}</div>
+      {{message}}
+    <span v-text="name" class="test">{{b}}</span>
+    <input type="text" v-model="message">
   </div>
   <script data-main="./dist/lib/main.js" src="./dist/lib/require.js"></script>
 </body>

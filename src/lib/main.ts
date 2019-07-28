@@ -1,9 +1,12 @@
 // import MVVM = require('../js/mvvm');
 import MVVM from '../js/mvvm';
-new MVVM({
+const vm = new MVVM({
   el: '#app',
   data: {
     message: 'xxxx',
-    c: 0
+    initData: {
+      name: 'Y&GM'
+    },
+    name: 0
   }
 });

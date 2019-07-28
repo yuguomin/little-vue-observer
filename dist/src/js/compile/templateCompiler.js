@@ -50,13 +50,10 @@ define(["require", "exports", "../../utils/isElementNode", "../../utils/nodeToFr
                     _this.compileElement(node);
                 }
                 else {
+                    console.log(node);
+                    // console.log(node);
                     // compile template
-                    var getTemplateTest = /\{\{(.+)\}\}/;
-                    var expr = node.textContent;
-                    if (expr && getTemplateTest.test(expr)) {
-                        expr = RegExp.$1;
-                        _this.compileTemplate(node, expr);
-                    }
+                    // this.compileTemplate(node);
                 }
             });
         };
@@ -69,19 +66,25 @@ define(["require", "exports", "../../utils/isElementNode", "../../utils/nodeToFr
                     var expr = attr.value;
                     switch (attrName) {
                         case directive_1.DirectiveMap['v-text']:
-                            _this.compileText(node, _this.vm, expr);
+                            _this.compileDirectiveText(node, _this.vm, expr);
                             break;
                         case directive_1.DirectiveMap['v-model']:
                             if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
-                                _this.compileValue(node, _this.vm, expr);
+                                _this.compileDirectiveValue(node, _this.vm, expr);
                             }
                             break;
                     }
                 }
             });
         };
-        TemplateCompiler.prototype.compileTemplate = function (node, expr) {
-            this.compileText(node, this.vm, expr);
+        TemplateCompiler.prototype.compileTemplate = function (node) {
+            var getTemplateTest = /\{\{(.+)\}\}/;
+            var expr = node.textContent;
+            console.log(node);
+            if (expr && getTemplateTest.test(expr)) {
+                expr = RegExp.$1;
+                console.log('expr', expr);
+            }
         };
         return TemplateCompiler;
     }(compileUtils_1.default));

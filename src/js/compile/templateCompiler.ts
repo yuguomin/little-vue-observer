@@ -36,8 +36,16 @@ export default class TemplateCompiler extends CompileUtils {
     const childNodes: Element[] = toArray(fragment.childNodes);
     childNodes.forEach((node) => {
       if (isElementNode(node)) {
-        // compiler directive
+        // compile directive
         this.compileElement(node);
+      } else {
+        // compile template
+        const getTemplateTest = /\{\{(.+)\}\}/;
+        let expr = node.textContent;
+        if (expr && getTemplateTest.test(expr)) {
+          expr = RegExp.$1;
+          this.compileTemplate(node, expr);
+        }
       }
     })
   }
@@ -49,11 +57,20 @@ export default class TemplateCompiler extends CompileUtils {
       if (this.isDirective(attrName)) {
         const expr = attr.value;
         switch (attrName) {
-          case DirectiveMap["v-text"]:
-            this.compileDirectiveText(node, this.vm, expr);
+          case DirectiveMap['v-text']:
+            this.compileText(node, this.vm, expr);
+            break;
+          case DirectiveMap['v-model']:
+            if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
+              this.compileValue(node as HTMLInputElement, this.vm, expr);
+            }
             break;
         }
       }
     });
+  }
+
+  public compileTemplate(node: Element, expr: string) {
+    this.compileText(node, this.vm, expr);
   }
 } 
