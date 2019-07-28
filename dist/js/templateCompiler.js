@@ -1,4 +1,4 @@
-define(["require", "exports", "../utils/isElementNode", "../utils/nodeToFragment"], function (require, exports, isElementNode_1, nodeToFragment_1) {
+define(["require", "exports", "../utils/isElementNode", "../utils/nodeToFragment", "../utils/toArray"], function (require, exports, isElementNode_1, nodeToFragment_1, toArray_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     // create a template compiler tool
@@ -8,7 +8,7 @@ define(["require", "exports", "../utils/isElementNode", "../utils/nodeToFragment
             this.vm = vm;
             if (this.el) {
                 var fragment = nodeToFragment_1.nodeToFragment(this.el);
-                this.compiler(fragment);
+                this.compile(fragment);
                 // this.el.appendChild(fragment);
             }
         }
@@ -21,7 +21,19 @@ define(["require", "exports", "../utils/isElementNode", "../utils/nodeToFragment
             }
             return null;
         };
-        TemplateCompiler.prototype.compiler = function (fragment) {
+        TemplateCompiler.prototype.compile = function (fragment) {
+            var _this = this;
+            var childNodes = toArray_1.toArray(fragment.childNodes);
+            childNodes.forEach(function (node) {
+                if (isElementNode_1.isElementNode(node)) {
+                    // compiler directive
+                    _this.compileElement(node);
+                }
+            });
+        };
+        TemplateCompiler.prototype.compileElement = function (node) {
+            var nodeAttrs = toArray_1.toArray(node.attributes);
+            console.log(nodeAttrs);
         };
         return TemplateCompiler;
     }());

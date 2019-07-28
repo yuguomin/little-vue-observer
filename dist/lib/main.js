@@ -5,14 +5,11 @@ define(["require", "exports", "../js/mvvm"], function (require, exports, mvvm_1)
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     mvvm_1 = __importDefault(mvvm_1);
-    var a = document.getElementById('app');
-    if (a) {
-        new mvvm_1.default({
-            el: a,
-            data: {
-                b: 'xxxx',
-                c: 0
-            }
-        });
-    }
+    new mvvm_1.default({
+        el: '#app',
+        data: {
+            message: 'xxxx',
+            c: 0
+        }
+    });
 });

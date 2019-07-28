@@ -1,4 +1,4 @@
-import TemplateCompiler from "./templateCompiler";
+import TemplateCompiler from './compile/templateCompiler';
 
 interface IVmOptions {
   el: Element | string;

@@ -1,7 +1,7 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "./templateCompiler"], function (require, exports, templateCompiler_1) {
+define(["require", "exports", "./compile/templateCompiler"], function (require, exports, templateCompiler_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     templateCompiler_1 = __importDefault(templateCompiler_1);
