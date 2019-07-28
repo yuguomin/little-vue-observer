@@ -10,27 +10,6 @@
   <div id="app">
     <div @Click="reset()">{{b}}</div>
   </div>
-
-  <script src="./dist/js/mvvm.js"></script>
-  <script>
-    var a = document.getElementById('app');
-    new MVVM({
-      el: a,
-      data: {
-        b: 'xxxx',
-        c: 0
-      },
-      methods: {
-        reset: function() {
-          console.log(1);
-        }
-      },
-      watch: {
-        b() {
-          this.data.c = 1;
-        }
-      }
-    });
-  </script>
+  <script data-main="./dist/lib/main.js" src="./dist/lib/require.js"></script>
 </body>
 </html>

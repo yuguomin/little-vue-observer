@@ -5,7 +5,7 @@ interface IVmOptions {
   data: object;
 }
 
-export default class MVVMBasicMVVM {
+export default class MVVM {
   public $vm: any;
   public $el: Element | string;
   public $data: object;

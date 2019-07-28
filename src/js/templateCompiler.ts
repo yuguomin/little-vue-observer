@@ -1,5 +1,5 @@
-import { isElementNode } from "src/utils/isElementNode";
-import { nodeToFragment } from "src/utils/nodeToFragment";
+import { isElementNode } from "../utils/isElementNode";
+import { nodeToFragment } from "../utils/nodeToFragment";
 
 // create a template compiler tool
 export default class TemplateCompiler {
@@ -12,6 +12,8 @@ export default class TemplateCompiler {
 
      if  (this.el) {
       const fragment = nodeToFragment(this.el);
+      this.compiler(fragment);
+      // this.el.appendChild(fragment);
      }
   }
 
@@ -20,7 +22,7 @@ export default class TemplateCompiler {
 
 
 
-  getAppNode(el: Element | string) {
+  public getAppNode(el: Element | string) {
     if (isElementNode(el)) {
       return el as Element;
     }
@@ -28,5 +30,9 @@ export default class TemplateCompiler {
       return document.querySelector(el);
     }
     return null;
+  }
+
+  public compiler(fragment: DocumentFragment) {
+ 
   }
 } 
